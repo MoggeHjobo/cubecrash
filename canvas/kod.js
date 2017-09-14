@@ -6,6 +6,7 @@ var rot;
 var c;
 var lista = new Array();
 var images = Array();
+var listamedborttagning = new Array();
 
 
 
@@ -88,14 +89,25 @@ var images = Array();
 
 
 		 lista[row][col].kill();
-		 var l = grannar(lista[row][col]);
+
+		/* 
+		skapa en lista med klickad kub.
+		Om någon lika lägg till den i listan och kolla grannar på den. 
+
+		*/
+		nyaGrannar(lista[row][col]);
+		console.log(listamedborttagning.length);
+		
+
+
+/*		 var l = grannar(lista[row][col]);
 		 alert(l.length);
 
 		 /*
 		 Algoritmen nedan ska ersättas med en rekursion
 		 Just nu testas tänket med ett par forloopar
 		 */
-
+/*
 		 for(pp=0;pp<l.length;pp++)
 		 {
 				t = grannar(l[pp]);
@@ -107,70 +119,108 @@ var images = Array();
 
 
 	  }
-
-
-	  function grannar(cube)
-	  {
-
-		   var holder = new Array();
-
-
-
-
-			try{
-
-					if(lista[cube.getRow()-1][cube.getColumn()].getType()== cube.getType())
-					{
-						lista[cube.getRow()-1][cube.getColumn()].kill();
-						holder.push(lista[cube.getRow()-1][cube.getColumn()]);
-					}
-
+*/
+	  function nyaGrannar(kub){
+		console.log("Här inne");
+		listamedborttagning.push(kub);
+			try{if(lista[kub.getRow()-1][kub.getColumn()].getType()== kub.getType())
+			{
+				console.log("Samma");
+			if(lista[kub.getRow()-1][kub.getColumn()].isAlive()){
+				lista[kub.getRow()-1][kub.getColumn()].kill();
+				nyaGrannar(lista[kub.getRow()-1][kub.getColumn()]);
 			}
-			catch(error){
-				console.log(error);
-			}
+			}} catch(error){ console.log(error);}
+			try{if(lista[kub.getRow()+1][kub.getColumn()].getType()== kub.getType())
+			{
+				console.log("Samma");
+			  if(lista[kub.getRow()+1][kub.getColumn()].isAlive()){
+				lista[kub.getRow()+1][kub.getColumn()].kill();
+				nyaGrannar(lista[kub.getRow()+1][kub.getColumn()]);
+			  }
+			}} catch(error){ console.log(error);}
+			try{if(lista[kub.getRow()][kub.getColumn()+1].getType()== kub.getType())
+			{
+				console.log("Samma");
+			  if(lista[kub.getRow()][kub.getColumn()+1].isAlive()){
+				lista[kub.getRow()][kub.getColumn()+1].kill();
+			  nyaGrannar(lista[kub.getRow()][kub.getColumn()+1]);
+			  }
+			}} catch(error){ console.log(error);}
+			try{if(lista[kub.getRow()][kub.getColumn()-1].getType()== kub.getType())
+			{
+				console.log("Samma");
+			  if(lista[kub.getRow()][kub.getColumn()-1].isAlive()){
+				lista[kub.getRow()][kub.getColumn()-1].kill();
+			  nyaGrannar(lista[kub.getRow()][kub.getColumn()-1]);
+			  }
+			}} catch(error){ console.log(error);}
+			
 
-			try{
+	  }
 
-					if(lista[cube.getRow()+1][cube.getColumn()].getType()== cube.getType())
-					{
-						lista[cube.getRow()+1][cube.getColumn()].kill();
-						holder.push(lista[cube.getRow()+1][cube.getColumn()]);
-					}
+	//   function grannar(cube)
+	//   {
 
-			}
-			catch(error){
-				console.log(error);
-			}
-
-			try{
-
-					if(lista[cube.getRow()][cube.getColumn()+1].getType()== cube.getType())
-					{
-						lista[cube.getRow()][cube.getColumn()+1].kill();
-						holder.push(lista[cube.getRow()][cube.getColumn()+1]);
-					}
-
-
-
-			}
-			catch(error){
-				console.log(error);
-			}
-			try{
-
-					if(lista[cube.getRow()][cube.getColumn()-1].getType()== cube.getType())
-					{
-						lista[cube.getRow()][cube.getColumn()-1].kill();
-						holder.push(lista[cube.getRow()][cube.getColumn()-1]);
-					}
-
-			}
-			catch(error){
-				console.log(error);
-			}
-
-			return holder;
+	// 	   var holder = new Array();
 
 
-		}
+
+
+	// 		try{
+
+	// 				if(lista[cube.getRow()-1][cube.getColumn()].getType()== cube.getType())
+	// 				{
+	// 					lista[cube.getRow()-1][cube.getColumn()].kill();
+	// 					holder.push(lista[cube.getRow()-1][cube.getColumn()]);
+	// 				}
+
+	// 		}
+	// 		catch(error){
+	// 			console.log(error);
+	// 		}
+
+	// 		try{
+
+	// 				if(lista[cube.getRow()+1][cube.getColumn()].getType()== cube.getType())
+	// 				{
+	// 					lista[cube.getRow()+1][cube.getColumn()].kill();
+	// 					holder.push(lista[cube.getRow()+1][cube.getColumn()]);
+	// 				}
+
+	// 		}
+	// 		catch(error){
+	// 			console.log(error);
+	// 		}
+
+	// 		try{
+
+	// 				if(lista[cube.getRow()][cube.getColumn()+1].getType()== cube.getType())
+	// 				{
+	// 					lista[cube.getRow()][cube.getColumn()+1].kill();
+	// 					holder.push(lista[cube.getRow()][cube.getColumn()+1]);
+	// 				}
+
+
+
+	// 		}
+	// 		catch(error){
+	// 			console.log(error);
+	// 		}
+	// 		try{
+
+	// 				if(lista[cube.getRow()][cube.getColumn()-1].getType()== cube.getType())
+	// 				{
+	// 					lista[cube.getRow()][cube.getColumn()-1].kill();
+	// 					holder.push(lista[cube.getRow()][cube.getColumn()-1]);
+	// 				}
+
+	// 		}
+	// 		catch(error){
+	// 			console.log(error);
+	// 		}
+
+	// 		return holder;
+
+
+	 	}

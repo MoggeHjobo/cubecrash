@@ -95,8 +95,9 @@ var listamedborttagning = new Array();
 		Om någon lika lägg till den i listan och kolla grannar på den. 
 
 		*/
+		listamedborttagning = new Array();
 		nyaGrannar(lista[row][col]);
-		console.log(listamedborttagning.length);
+//		console.log(listamedborttagning.length);
 		
 
 
@@ -121,11 +122,9 @@ var listamedborttagning = new Array();
 	  }
 */
 	  function nyaGrannar(kub){
-		console.log("Här inne");
 		listamedborttagning.push(kub);
 			try{if(lista[kub.getRow()-1][kub.getColumn()].getType()== kub.getType())
 			{
-				console.log("Samma");
 			if(lista[kub.getRow()-1][kub.getColumn()].isAlive()){
 				lista[kub.getRow()-1][kub.getColumn()].kill();
 				nyaGrannar(lista[kub.getRow()-1][kub.getColumn()]);
@@ -133,7 +132,6 @@ var listamedborttagning = new Array();
 			}} catch(error){ console.log(error);}
 			try{if(lista[kub.getRow()+1][kub.getColumn()].getType()== kub.getType())
 			{
-				console.log("Samma");
 			  if(lista[kub.getRow()+1][kub.getColumn()].isAlive()){
 				lista[kub.getRow()+1][kub.getColumn()].kill();
 				nyaGrannar(lista[kub.getRow()+1][kub.getColumn()]);
@@ -141,7 +139,6 @@ var listamedborttagning = new Array();
 			}} catch(error){ console.log(error);}
 			try{if(lista[kub.getRow()][kub.getColumn()+1].getType()== kub.getType())
 			{
-				console.log("Samma");
 			  if(lista[kub.getRow()][kub.getColumn()+1].isAlive()){
 				lista[kub.getRow()][kub.getColumn()+1].kill();
 			  nyaGrannar(lista[kub.getRow()][kub.getColumn()+1]);
@@ -149,7 +146,6 @@ var listamedborttagning = new Array();
 			}} catch(error){ console.log(error);}
 			try{if(lista[kub.getRow()][kub.getColumn()-1].getType()== kub.getType())
 			{
-				console.log("Samma");
 			  if(lista[kub.getRow()][kub.getColumn()-1].isAlive()){
 				lista[kub.getRow()][kub.getColumn()-1].kill();
 			  nyaGrannar(lista[kub.getRow()][kub.getColumn()-1]);

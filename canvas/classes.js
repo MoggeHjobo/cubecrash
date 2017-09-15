@@ -14,6 +14,7 @@
 		this.getType = getType;
 		this.getColumn = getColumn;
 		this.getRow = getRow;
+		this.isAlive = isAlive;
 	}
 	
 	function getRow()
@@ -29,6 +30,11 @@
 	function kill()
 	{
 		this.dead = true;
+	}
+
+	function isAlive()
+	{
+		return !this.dead;
 	}
 	
 	function getType()
